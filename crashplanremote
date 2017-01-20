@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+SRC_PATH="${HOME}/.crashplanremote/"
+
+UI_PROP_PATH="/Applications/CrashPlan.app/Contents/Resources/Java/conf/"
+UI_INFO_PATH="/Library/Application Support/CrashPlan/"
+
+UI_PROP="${UI_PROP_PATH}ui.properties"
+UI_PROP_DISKSTATION="${SRC_PATH}ui.properties.diskstation"
+UI_PROP_LOCAL="${SRC_PATH}ui.properties.local"
+UI_INFO="${UI_INFO_PATH}.ui_info"
+UI_INFO_DISKSTATION="${SRC_PATH}ui_info.diskstation"
+UI_INFO_LOCAL="${SRC_PATH}ui_info.local"
+
+echo "Copy remote configuration files..."
+sudo cp -v "${UI_PROP_DISKSTATION}" "${UI_PROP}"
+sudo cp -v "${UI_INFO_DISKSTATION}" "${UI_INFO}"
+
+echo "Open the CrashPlan app and wait..."
+open -Wa CrashPlan
+
+echo "Copy local configuation files..."
+sudo cp -v "${UI_PROP_LOCAL}" "${UI_PROP}"
+sudo cp -v "${UI_INFO_LOCAL}" "${UI_INFO}"
+
