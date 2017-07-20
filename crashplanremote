@@ -12,7 +12,19 @@ UI_INFO="${UI_INFO_PATH}.ui_info"
 UI_INFO_DISKSTATION="${SRC_PATH}ui_info.diskstation"
 UI_INFO_LOCAL="${SRC_PATH}ui_info.local"
 
-echo "Copy remote configuration files..."
+function help {
+    echo -e "Usage: $SCRIPT [-r]"
+    echo -e ""
+    echo -e " Copy the crash plan configuration files from the"
+    echo -e "  ~/.crashplanremote directory. Run the currently"
+    echo -e " installed version of crash plan. After the crash"
+    echo -e " plan app exits, copy back the local config files"
+    echo -e ""
+    echo -e " -r will refresh the cached local crash plan config files"
+    echo -e "    by copying them from their local location."
+    exit -1
+}
+
 sudo cp -v "${UI_PROP_DISKSTATION}" "${UI_PROP}"
 sudo cp -v "${UI_INFO_DISKSTATION}" "${UI_INFO}"
 
